@@ -7,7 +7,6 @@ import * as common from "./common/index.js"
 import * as routers from "./module/index.js";
 import { ipKeyGenerator, rateLimit } from 'express-rate-limit'
 import { redisClient } from "./db/redis.connection.js";
-process.env.NODE_ENV == "production"
 if (process.env.NODE_ENV == "production") {
   console.log = () => { }
 }
