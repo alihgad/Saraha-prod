@@ -6,6 +6,7 @@ import helmet from "helmet"
 import * as common from "./common/index.js"
 import * as routers from "./module/index.js";
 import { ipKeyGenerator, rateLimit } from 'express-rate-limit'
+import morgan from "morgan";
 import { redisClient } from "./db/redis.connection.js";
 if (process.env.NODE_ENV == "production") {
   console.log = () => { }
@@ -14,6 +15,8 @@ if (process.env.NODE_ENV == "production") {
 const app = express()
 const port = config.port
 await connection()
+
+
 
 
 
@@ -29,7 +32,7 @@ let corsOptions = {
 
 
 
-
+app.use(morgan("dev"))
 
 app.use(cors(corsOptions), helmet(), express.json())
 app.set("trust proxy", true)
